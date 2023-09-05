@@ -1,6 +1,6 @@
-import 'package:event_planner/pages/home_page.dart';
 import 'package:event_planner/pages/registration_page.dart';
 import 'package:event_planner/widgets/TextFieldDecoration.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,24 +14,42 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController(),
       passwordController = TextEditingController();
 
-  void onSubmit(BuildContext context) {
+  void onSubmit(BuildContext context) async {
     String email = emailController.text;
     String password = passwordController.text;
 
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("email can not be empty!"),
+        const SnackBar(
+          content: const Text("email can not be empty!"),
         ),
       );
     }
 
     if (password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("password can not be empty!"),
         ),
       );
+    }
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+
+      Navigator.of(context).pushReplacementNamed("/");
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("User not found!"),
+          ),
+        );
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
     }
 
     // login operation
@@ -146,22 +164,11 @@ class _LoginPageState extends State<LoginPage> {
                           builder: (context) => const RegistrationPage()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "Sign up",
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
-                  child: Text(
-                    "home page",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                )
               ]),
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:event_planner/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -11,10 +11,12 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   void onSubmit() async {
+    String name = nameController.text;
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     String confirmPass = confirmPasswordController.text.trim();
@@ -27,10 +29,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
         email: email,
         password: password,
       );
+      Navigator.of(context).pushReplacementNamed('/login');
       print(credential);
       FirebaseFirestore db = FirebaseFirestore.instance;
 
       final user = <String, String>{
+        "name": name,
         "email": email,
         "uid": credential.user!.uid,
       };
@@ -89,8 +93,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
                 TextField(
                     style: TextStyle(color: Colors.white),
-
-                    //     controller: emailController,
+                    controller: nameController,
                     decoration: InputDecoration(
                         hintText: "Your Name",
                         hintStyle: TextStyle(color: Colors.white),
