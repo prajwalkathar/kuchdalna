@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                 );
               }).toList(),
             ),
-            const SizedBox(
+            SizedBox(
               height: 30,
             ),
             Container(
@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                         width: 120,
                         color: Colors.yellow,
                         child: const Center(
-                            child:  Text(
+                            child: Text(
                           'wedding',
                           style: TextStyle(
                               color: Colors.black,
@@ -182,9 +182,9 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         print('wedding');
                         Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const Eventprofile()),
-                    );
+                          MaterialPageRoute(
+                              builder: (context) => const Eventprofile()),
+                        );
                       },
                     ),
                     InkWell(
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                         width: 120,
                         color: Colors.white,
                         child: const Center(
-                            child:  Text(
+                            child: Text(
                           'anniversarry',
                           style: TextStyle(
                               color: Colors.brown,
@@ -203,10 +203,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onTap: () {
                         print('anniversarry');
-                          Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const Eventprofile()),
-                    );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const Eventprofile()),
+                        );
                       },
                     ),
                     InkWell(
@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                         width: 120,
                         color: Colors.pink,
                         child: const Center(
-                            child:  Text(
+                            child: Text(
                           'birthday',
                           style: TextStyle(
                               color: Colors.black,
@@ -225,33 +225,54 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onTap: () {
                         print('birthday');
-                          Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const Eventprofile()),
-                    );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const Eventprofile()),
+                        );
                       },
                     ),
                     InkWell(
+                      onTap: () {
+                        print('others');
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const Eventprofile()),
+                        );
+                      },
                       child: Container(
                         height: 120,
                         width: 120,
                         color: Colors.blue,
                         child: const Center(
-                            child:  Text(
-                          'others',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )),
+                          child: Text(
+                            'others',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
                       ),
-                      onTap: () {
-                        print('others');
-                          Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const Eventprofile()),
-                    );
-                      },
+                    ),
+                    Container(
+                      height: 120,
+                      width: 120,
+                      color: Colors.pink,
+                    ),
+                    Container(
+                      height: 120,
+                      width: 120,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      height: 120,
+                      width: 120,
+                      color: Colors.orange,
+                    ),
+                    Container(
+                      height: 120,
+                      width: 120,
+                      color: Colors.white,
                     ),
                   ],
                 ),
