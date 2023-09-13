@@ -1,25 +1,62 @@
+import 'package:flutter/material.dart';
 
-// import 'package:flutter/material.dart';
+class GridImg extends StatefulWidget {
+  final String imagePath;
+  final bool isSeleted;
+  final Function(bool?)? onSelected;
+  const GridImg(
+      {super.key,
+      required this.imagePath,
+      required this.onSelected,
+      required this.isSeleted});
 
-// final List imgList = [
-//   'assets/slider1.jpg',
-//   'assets/login.png',
-//   'assets/registration.png'
-// ];
+  @override
+  State<GridImg> createState() => _GridImgState();
+}
 
-
-// Card Grid_Img() {
-//   return Card(
-//     child: Center(
-//       child: Stack(
-//         children: [
-//           Image.asset(imgList[Index]),
-//           const Icon(
-//             Icons.favorite_border_outlined,
-//             size: 20,
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }
+class _GridImgState extends State<GridImg> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Center(
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: SizedBox.expand(
+                child: Image.network(
+                  widget.imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: Checkbox(
+                value: widget.isSeleted,
+                onChanged: widget.onSelected,
+              ),
+            ),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 80,
+                  padding: EdgeInsets.all(10),
+                  decoration:
+                      BoxDecoration(color: Colors.white.withOpacity(0.5)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(),
+                      ),
+                      Text("Details ->"),
+                    ],
+                  ),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}

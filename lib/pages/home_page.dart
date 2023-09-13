@@ -254,26 +254,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 120,
-                      width: 120,
-                      color: Colors.pink,
-                    ),
-                    Container(
-                      height: 120,
-                      width: 120,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 120,
-                      width: 120,
-                      color: Colors.orange,
-                    ),
-                    Container(
-                      height: 120,
-                      width: 120,
-                      color: Colors.white,
-                    ),
                   ],
                 ),
               ),
