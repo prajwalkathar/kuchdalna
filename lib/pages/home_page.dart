@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:event_planner/pages/ImageView.dart';
-import 'package:event_planner/pages/event_profile.dart';
+//import 'package:event_planner/pages/event_profile.dart';
+import 'package:event_planner/pages/venue_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -153,109 +153,148 @@ class _HomePageState extends State<HomePage> {
                 );
               }).toList(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
+
             Container(
-              width: 330,
-              height: 300,
-              color: Colors.black,
-              child: Center(
-                child: Wrap(
-                  spacing: 30,
-                  runSpacing: 30,
-                  children: [
-                    InkWell(
-                      child: Container(
-                        height: 120,
-                        width: 120,
-                        color: Colors.yellow,
-                        child: const Center(
-                            child: Text(
-                          'wedding',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )),
-                      ),
-                      onTap: () {
-                        print('wedding');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Eventprofile()),
-                        );
-                      },
-                    ),
-                    InkWell(
-                      child: Container(
-                        height: 120,
-                        width: 120,
-                        color: Colors.white,
-                        child: const Center(
-                            child: Text(
-                          'anniversarry',
-                          style: TextStyle(
-                              color: Colors.brown,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )),
-                      ),
-                      onTap: () {
-                        print('anniversarry');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Eventprofile()),
-                        );
-                      },
-                    ),
-                    InkWell(
-                      child: Container(
-                        height: 120,
-                        width: 120,
-                        color: Colors.pink,
-                        child: const Center(
-                            child: Text(
-                          'birthday',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )),
-                      ),
-                      onTap: () {
-                        print('birthday');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Eventprofile()),
-                        );
-                      },
-                    ),
-                    InkWell(
-                      onTap: () {
-                        print('others');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Eventprofile()),
-                        );
-                      },
-                      child: Container(
-                        height: 120,
-                        width: 120,
-                        color: Colors.blue,
-                        child: const Center(
-                          child: Text(
-                            'others',
+              height: 370,
+              width: 370,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(70),
+              ),
+              //  color: Colors.black12,
+              child: GridView.count(
+                padding: EdgeInsets.all(20),
+                crossAxisCount: 2,
+                children: [
+                  InkWell(
+                    child: Container(
+                      decoration: const BoxDecoration(),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              //    boxShadow: [BoxShadow(color: Colors.black12)],
+                              image: DecorationImage(
+                                image: AssetImage("assets/wedding.png"),
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            "Wedding",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                          )
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const Venuepage()),
+                      );
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/engagement.jpg"),
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            "Engagement",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const Venuepage()),
+                      );
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/birthday.png"),
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            "Birthday",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const Venuepage()),
+                      );
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/more.png"),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          const Text(
+                            "More",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const Venuepage()),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
             //   Text(FirebaseAuth.instance.currentUser.toString()),
