@@ -1,3 +1,4 @@
+import 'package:event_planner/pages/payment_page.dart';
 import 'package:flutter/material.dart';
 
 class Billpage extends StatelessWidget {
@@ -10,14 +11,14 @@ class Billpage extends StatelessWidget {
         title: const Text('Final Bill'),
       ),
       body: Center(
-        child: ElevatedButton(onPressed: (){
-        //  Navigator.of(context).push(
-          //                MaterialPageRoute(
-           //                   builder: (context) => const Foodpage()),
-             //           );
-        }, child: const Text('Pay')),
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const PaymentPage()),
+              );
+            },
+            child: const Text('Pay')),
       ),
     );
-
   }
 }

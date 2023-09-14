@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_planner/models/venue.dart';
 import 'package:event_planner/pages/food_page.dart';
 import 'package:event_planner/widgets/Grid_Img.dart';
-import 'package:event_planner/widgets/TextFieldDecoration.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Venuepage extends StatefulWidget {
   const Venuepage({super.key});
@@ -45,7 +43,7 @@ class _VenuepageState extends State<Venuepage> {
         future: futureVenuesList,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -54,20 +52,23 @@ class _VenuepageState extends State<Venuepage> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 20,
+                ),
                 const Text(
                   'Select the venue your want for your Event',
                   style: TextStyle(
-                      color: Colors.black45,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Expanded(
                   child: ListView.builder(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     itemCount: venuesList!.length,
                     itemExtent: 260,
                     itemBuilder: (context, index) {
@@ -109,28 +110,6 @@ class _VenuepageState extends State<Venuepage> {
           }
         },
       ),
-
-      // Center(
-      //   child: Column(
-      //     children: [,
-      //       const Text(
-      //         'Select the venue your want for your Event',
-      //         style: TextStyle(
-      //             color: Colors.black45,
-      //             fontWeight: FontWeight.bold,
-      //             fontSize: 20),
-      //         textAlign: TextAlign.center,'
-      //       ),
-      //       ElevatedButton(
-      //           onPressed: () {
-      //             Navigator.of(context).push(
-      //               MaterialPageRoute(builder: (context) => const Foodpage()),
-      //             );
-      //           },
-      //           child: const Text('Next')),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

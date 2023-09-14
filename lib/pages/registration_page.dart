@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:event_planner/pages/login_page.dart';
+import 'package:event_planner/widgets/TextField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -69,7 +70,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           child: Container(
             width: width,
             height: height,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage("assets/registration.png"),
@@ -79,125 +80,62 @@ class _RegistrationPageState extends State<RegistrationPage> {
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Column(children: [
                 SizedBox(
-                  height: height / 5,
+                  height: height / 7,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
                   child: Text(
                     "Registration",
                     style: TextStyle(fontSize: 31, color: Colors.white),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                TextField(
-                    style: TextStyle(color: Colors.white),
-                    controller: nameController,
-                    decoration: InputDecoration(
-                        hintText: "Your Name",
-                        hintStyle: TextStyle(color: Colors.white),
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: Color.fromARGB(255, 202, 92, 45),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 4, 96, 165),
-                              width: 2,
-                            )),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            )))),
-                SizedBox(
+                textFieldFunc('Enter Your Name', Colors.white, Icons.person,
+                    false, nameController),
+                const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                    style: TextStyle(color: Colors.white),
-                    controller: emailController,
-                    decoration: InputDecoration(
-                        hintText: "Enter Email id",
-                        hintStyle: TextStyle(color: Colors.white),
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: Color.fromARGB(255, 202, 92, 45),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 4, 96, 165),
-                              width: 2,
-                            )),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            )))),
-                SizedBox(
+                textFieldFunc('Enter Your Email', Colors.white, Icons.email,
+                    false, emailController),
+                const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  style: TextStyle(color: Colors.white),
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    hintText: "Create Password",
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(
-                      Icons.password,
-                      color: Color.fromARGB(255, 202, 92, 45),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 4, 96, 165),
-                          width: 2,
-                        )),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
+                textFieldFunc('Password', Colors.white, Icons.password, false,
+                    passwordController),
+                const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  style: TextStyle(color: Colors.white),
-                  controller: confirmPasswordController,
-                  decoration: InputDecoration(
-                    hintText: "Confirm Password",
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(
-                      Icons.password,
-                      color: Color.fromARGB(255, 202, 92, 45),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 4, 96, 165),
-                          width: 2,
-                        )),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
+                textFieldFunc('Confirm Password', Colors.white, Icons.password,
+                    false, confirmPasswordController),
+                const SizedBox(
                   height: 30,
                 ),
                 ElevatedButton(
                   onPressed: onSubmit,
-                  child: Text(
+                  child: const Text(
                     "Submit",
                     style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Have an account?",
+                  style: TextStyle(color: Colors.white),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  child: const Text(
+                    "Sign In",
+                    style: TextStyle(color: Colors.blue),
                   ),
                 ),
               ]),

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:event_planner/pages/ImageView.dart';
+import 'package:event_planner/pages/event_profile.dart';
 //import 'package:event_planner/pages/event_profile.dart';
 import 'package:event_planner/pages/venue_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -154,7 +155,12 @@ class _HomePageState extends State<HomePage> {
               }).toList(),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
+            ),
+            const Align(
+                alignment: Alignment.center, child: Text('Choose Your Event')),
+            const SizedBox(
+              height: 20,
             ),
 
             Container(
@@ -197,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Venuepage()),
+                            builder: (context) => const Eventprofile()),
                       );
                     },
                   ),
@@ -227,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Venuepage()),
+                            builder: (context) => const Eventprofile()),
                       );
                     },
                   ),
@@ -257,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Venuepage()),
+                            builder: (context) => const Eventprofile()),
                       );
                     },
                   ),
@@ -290,7 +296,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Venuepage()),
+                            builder: (context) => const Eventprofile()),
                       );
                     },
                   ),
@@ -298,13 +304,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //   Text(FirebaseAuth.instance.currentUser.toString()),
-            ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushReplacementNamed("/login");
-              },
-              child: const Text("Sign Out"),
-            )
           ],
         ),
       ),

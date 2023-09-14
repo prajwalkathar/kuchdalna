@@ -1,5 +1,5 @@
 import 'package:event_planner/pages/registration_page.dart';
-import 'package:event_planner/widgets/TextFieldDecoration.dart';
+import 'package:event_planner/widgets/TextField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: const Text("email can not be empty!"),
+          content: Text("email can not be empty!"),
         ),
       );
     }
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             width: width,
             height: height,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage("assets/login.png"),
@@ -79,81 +79,75 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: height / 8,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Welcome\nEvent Planner",
                     style: TextStyle(fontSize: 35, color: Colors.white),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
                   child: Text(
                     "Login",
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Enter your email",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
-                TextField(
-                  style: TextStyle(color: Colors.white),
-                  controller: emailController,
-                  decoration: textFieldDecoration(),
-                ),
-                SizedBox(
+                textFieldFunc(
+                    "", Colors.white, Icons.email, false, emailController),
+                const SizedBox(
                   height: 10,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Enter your password",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
-                TextField(
-                  style: TextStyle(color: Colors.white),
-                  controller: passwordController,
-                  decoration: textFieldDecoration(),
-                ),
-                SizedBox(
+                textFieldFunc(
+                    "", Colors.white, Icons.password, true, passwordController),
+                const SizedBox(
                   height: 1,
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "forget password",
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 ElevatedButton(
                     onPressed: () => onSubmit(context), child: Text("Login")),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   "don't have an account?",
                   style: TextStyle(color: Colors.white),
                 ),
