@@ -18,9 +18,16 @@ class _HomePageState extends State<HomePage> {
   final CarouselController _controller = CarouselController();
 
   List imgList = [
-    'assets/slider1.jpg',
-    'assets/login.png',
-    'assets/registration.png'
+    'assets/event1.jpeg',
+    'assets/event2.jpeg',
+    'assets/event3.jpeg',
+    'assets/event4.jpeg',
+    'assets/event5.jpeg',
+    'assets/event6.jpeg',
+    'assets/event7.jpeg',
+    'assets/event8.jpeg',
+    'assets/event9.jpeg',
+    'assets/evnet10.jpeg',
   ];
 
   @override
@@ -28,18 +35,41 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Event planner'),
+          title: const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Event planner',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+            ),
+          ),
         ),
         drawer: Drawer(
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 40, 20, 40),
+                width: double.infinity,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+                        height: 124,
+                        width: 124,
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Text(
+                        "Prajwal Kathar",
+                        style: TextStyle(fontSize: 24),
+                      )
+                    ],
+                  ),
                 ),
-                child: Text('Drawer Header'),
               ),
               ListTile(
                 title: const Text('Home'),
@@ -158,7 +188,14 @@ class _HomePageState extends State<HomePage> {
               height: 20,
             ),
             const Align(
-                alignment: Alignment.center, child: Text('Choose Your Event')),
+                alignment: Alignment.center,
+                child: Text(
+                  'Choose Your Event',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
+                )),
             const SizedBox(
               height: 20,
             ),
@@ -203,7 +240,9 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Eventprofile()),
+                            builder: (context) => const Eventprofile(
+                                  eventType: "Wedding",
+                                )),
                       );
                     },
                   ),
@@ -233,7 +272,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Eventprofile()),
+                            builder: (context) =>
+                                const Eventprofile(eventType: "Engagement")),
                       );
                     },
                   ),
@@ -263,7 +303,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Eventprofile()),
+                            builder: (context) =>
+                                const Eventprofile(eventType: "Birthday")),
                       );
                     },
                   ),
@@ -296,7 +337,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => const Eventprofile()),
+                            builder: (context) =>
+                                const Eventprofile(eventType: "More")),
                       );
                     },
                   ),

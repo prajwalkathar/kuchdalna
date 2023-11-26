@@ -3,7 +3,8 @@ import 'package:event_planner/widgets/TextField.dart';
 import 'package:flutter/material.dart';
 
 class Eventprofile extends StatefulWidget {
-  const Eventprofile({super.key});
+  final String eventType;
+  const Eventprofile({super.key, required this.eventType});
 
   @override
   State<Eventprofile> createState() => _EventprofileState();
@@ -56,8 +57,38 @@ class _EventprofileState extends State<Eventprofile> {
             ),
             ElevatedButton(
               onPressed: () {
+                String eventName = eventNameController.text.toString().trim();
+                String eventDate = dateController.text.toString().trim();
+                String eventGuests = guestsController.text.toString().trim();
+
+                if (eventName.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Event Name can not be empty!")));
+                  return;
+                }
+
+                if (eventDate.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Event Date can not be empty!")));
+                  return;
+                }
+
+                if (eventGuests.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Event Guests can not be empty!")));
+                  return;
+                }
+
+                Map<String, dynamic> pagedata = {
+                  "eventType": widget.eventType,
+                  "eventName": eventName,
+                  "date": eventDate,
+                  "guestCount": eventGuests,
+                };
+
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Venuepage()),
+                  MaterialPageRoute(
+                      builder: (context) => Venuepage(pagedata: pagedata)),
                 );
               },
               child: const Text('Next'),

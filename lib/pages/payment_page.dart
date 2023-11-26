@@ -11,7 +11,8 @@ class PaymentPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("payment"),
+            const Text("Total Amount"),
+            const Text("40000 Rs"),
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -19,6 +20,12 @@ class PaymentPage extends StatelessWidget {
                   );
                 },
                 child: const Text('Pay')),
+            Image.network(
+              "https://cdn-icons-png.flaticon.com/512/747/747470.png",
+              height: 200,
+              width: 200,
+              fit: BoxFit.cover,
+            )
           ],
         ),
       ),

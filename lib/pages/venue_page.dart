@@ -5,7 +5,8 @@ import 'package:event_planner/widgets/Grid_Img.dart';
 import 'package:flutter/material.dart';
 
 class Venuepage extends StatefulWidget {
-  const Venuepage({super.key});
+  final Map<String, dynamic> pagedata;
+  const Venuepage({super.key, required this.pagedata});
 
   @override
   State<Venuepage> createState() => _VenuepageState();
@@ -30,6 +31,8 @@ class _VenuepageState extends State<Venuepage> {
   @override
   void initState() {
     futureVenuesList = fetchVenues();
+
+    print(widget.pagedata.toString());
     super.initState();
   }
 

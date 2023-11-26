@@ -1,4 +1,6 @@
 import 'package:event_planner/firebase_options.dart';
+import 'package:event_planner/models/venue.dart';
+import 'package:event_planner/pages/food_page.dart';
 import 'package:event_planner/pages/home_page.dart';
 import 'package:event_planner/pages/login_page.dart';
 import 'package:event_planner/pages/registration_page.dart';
@@ -22,9 +24,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //  initialRoute: '/',
-      initialRoute: FirebaseAuth.instance.currentUser != null ? "/" : "/login",
+      initialRoute:
+          FirebaseAuth.instance.currentUser != null ? "/food" : "/login",
       routes: {
         "/": (context) => const HomePage(),
+        "/food": (context) => Foodpage(
+              selectedVenue:
+                  IVenue(capacity: "20", isSelected: true, price: "2000"),
+            ),
         "/login": (context) => const LoginPage(),
         "/registration": (context) => const RegistrationPage(),
       },
